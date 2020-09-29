@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+ <html lang="zh-cn">
+
+ <head>
+     <meta charset="UTF-8">
+     <title>黑马莫循</title>
+     <script src="../vue.js"></script>
+     <script src="../vue-router_3.0.2.js"></script>
+ </head>
+
+ <body>
+     <div id="app">
+         <router-link to="/user/1">User1</router-link>
+         <router-link to="/user/2">User2</router-link>
+         <router-link to="/user/3">User3</router-link>
+         <router-link to="/register">Register</router-link>
+         <router-view></router-view>
+     </div>
+
+     <script>
+         const User = {
+             props: ['id', 'uname', 'age'],
+             template: `<h1>User组件-用户id为：{{id}}</br>姓名为：{{uname}}</br>年龄为：{{age}}</h1>`
+         }
+         const Register = {
+             template: '<h1>Register</h1>'
+         }
+         const router = new VueRouter({
+             routes: [{
+                 path: '/',
+                 redirect: '/user/1'
+             }, {
+                 path: '/user/:id',
+                 component: User,
+                 props: route => ({
+                     uname: 'pingping',
+                     age: 28,
+                     id: route.params.id
+                 })
+             }, {
+                 path: '/register',
+                 component: Register
+             }]
+         })
+         var vm = new Vue({
+             el: '#app',
+             data: {
+
+             },
+             methods: {
+                 handle: function (e) {}
+             },
+             router
+         });
+     </script>
+ </body>
+
+ </html>

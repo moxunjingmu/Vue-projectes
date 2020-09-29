@@ -1,0 +1,88 @@
+ <!DOCTYPE html>
+ <html lang="zh-cn">
+
+ <head>
+     <meta charset="UTF-8">
+     <title>黑马莫循</title>
+     <script src="../vue.js"></script>
+     <script src="../vue-router_3.0.2.js"></script>
+     <style>
+         * {
+             text-decoration: none;
+             color: rgb(204, 152, 88);
+         }
+
+         p {
+             color: #8b1623;
+             font-size: 34px;
+         }
+     </style>
+ </head>
+
+ <body>
+     <div id="app">
+         <router-link to="/user">user</router-link>
+         <router-link to="/register">Register</router-link>
+         <router-view></router-view>
+
+
+
+     </div>
+
+     <script>
+         const User = {
+             template: `<h1>USER</h1>`
+         }
+         const Register = {
+             template: `<div>
+                        <h1>Register</h1>
+                        <router-link to="/register/tab1">tab1</router-link>
+                        <router-link to="/register/tab2">tab2</router-link>
+                        <router-view></router-view>
+                        </div>
+                        `
+         }
+
+         const tab1 = {
+             template: `<h1>tab1</h1>`
+         }
+         const tab2 = {
+             template: `<h1>tab2</h1>`
+         }
+         const err = {
+             template: '<p>404 NOT FOUND</p>'
+         }
+         const router = new VueRouter({
+             routes: [{
+                 path: '/',
+                 redirect: '/user'
+             }, {
+                 path: '/user',
+                 component: User
+             }, {
+                 path: '/register',
+                 component: Register,
+                 children: [{
+                     path: 'tab1',
+                     component: tab1
+                 }, {
+                     path: 'tab2',
+                     component: tab2
+                 }]
+             }, {
+                 path: '*',
+                 component: err
+             }]
+         })
+         var vm = new Vue({
+             el: '#app',
+             data: {},
+             methods: {
+                 handle: function (e) {}
+             },
+             router
+         });
+     </script>
+ </body>
+
+ </html>

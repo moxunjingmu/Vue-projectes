@@ -1,0 +1,32 @@
+1. 查看MySql服务是否启动
+	查看方法一：
+	1. 在"此电脑"右键，选择"管理"
+	2. 展开左侧菜单中的"服务和应用程序"，点击"服务"
+	3. 找到右侧 MySQL 服务，并启动
+
+	查看方法二：
+	1. win + r 打开运行窗口，并输入services.msc
+	2. 找到右侧 MySQL 服务，并启动
+
+2. 将数据导入到数据库
+	2.1 打开mysql，并登录
+	2.2 新建 mydb 数据库
+	2.3 使用msyql打开 03.vue-项目实战day1\素材\vue_api_server\db\mydb.sql
+	2.4 运行打开的mydb.sql文件，向mydb数据库添加数据
+	2.5 等待执行结束，并刷新数据库，查看mydb数据库tables表中文件个数是否为20个
+
+3. 修改链接数据库的密码，并启动服务
+	3.1 找到 03.vue-项目实战day1\素材\vue_api_server\config\default.json
+	3.2 将 db_config 节点中的 password 节点修改为 admin123
+
+4. 启动后台服务
+	4.1 在 03.vue-项目实战day1\素材\vue_api_server 目录下打开终端
+	4.2 在终端中输入 nodemon app.js 启动后台服务
+
+5. 打开postman后台是否可以运行
+	5.1 在地址栏中输入 http://127.0.0.1:8888/api/private/v1/login
+	5.2 设置为 post请求
+	5.3 在body 的 urlencode提交参数设置为
+		username：admin
+		password：123456
+	5.4 点击send查看是否请求成功
