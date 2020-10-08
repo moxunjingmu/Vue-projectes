@@ -1,0 +1,14 @@
+li {
+    list-style: none;
+}
+
+::placeholder {
+    color: rgb(225, 65, 100);
+}
+
+.box {
+    width: 580px;
+    height: 340px;
+    background-color: pink;
+    background: url('../75101937.png') no-repeat;
+}

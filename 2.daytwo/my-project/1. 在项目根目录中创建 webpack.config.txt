@@ -1,0 +1,27 @@
+1. 在项目根目录中创建 webpack.config.js
+
+const path = require('path')
+
+module.exports = {
+  entry: './src/index.js', // 被打包的文件
+  output: {   // 打包输出的文件
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  mode: 'production' // production：生产模式  development：开发模式
+}
+
+2. 在根目录创建 src文件夹
+2.1 创建index.js
+	import { hello } from './hello'
+
+	document.write(hello)
+2.2 创建hello.js
+	export const hello = 'hello webpack'
+
+3. 在运行.\node_modules\.bin\webpack 执行打包
+
+4. 简化打包命令：
+4.1 在package.json文件中的 scripts 节点中 添加 "build":"webpack"
+4.2 在终端中运行：npm run build 执行打包
+
